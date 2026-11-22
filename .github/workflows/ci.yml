@@ -1,0 +1,28 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    name: validate
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Validate ecosystem data
+        run: node scripts/validate-ecosystem.mjs
+      - name: Validate every JSON file
+        run: |
+          for file in $(find . -name '*.json' -not -path './.git/*'); do
+            node -e "JSON.parse(require('fs').readFileSync('$file', 'utf8'))" || exit 1
+            echo "ok $file"
+          done
