@@ -36,6 +36,10 @@
 2. `plugin_market action=list_indexes` 取索引地址，`action=list_plugins query="kanban board"` / `"sticky notes"` 等 → 更新 `adjacentPlugins`（只保留同类，宁缺毋滥）；
 3. 更新 `generatedAt`，提交。
 
+## 维护 workflow 的权限
+
+`.github/workflows/**` 是 GitHub 受保护路径，API 写入需要 **Workflows 写权限**（细粒度 PAT）或 classic PAT 的 `workflow` scope。`scripts/publish-github.mjs` 默认跳过 `.github/**`；确需推送工作流时设 `DSH_ECO_PUBLISH_WORKFLOWS=1`，并临时使用带 workflow 权限的 token（用完即删）。
+
 ## 判断标准（收录同类时必须满足）
 
 1. 与本项目**形态重叠**（便签墙 / 看板 / todo 板），而不是泛工作流插件；
