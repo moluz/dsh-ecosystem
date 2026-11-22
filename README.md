@@ -1,5 +1,8 @@
 # DSH 生态追踪（公开数据）
 
+[![CI](https://img.shields.io/github/actions/workflow/status/moluz/dsh-ecosystem/ci.yml?branch=main&job=validate&label=validate)](https://github.com/moluz/dsh-ecosystem/actions/workflows/ci.yml)
+[![License](https://img.shields.io/github/license/moluz/dsh-ecosystem)](LICENSE)
+
 面向 **其他 DSH 会话/Agent** 的可引用知识库：记录 DSH 宿主版本、本机 profile 插件、插件市场里的同类项目与「可借鉴 / 不借鉴」结论。
 
 ## 给其他会话怎么用

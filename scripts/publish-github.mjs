@@ -21,7 +21,8 @@ const root = process.cwd();
 const files = execFileSync('git', ['ls-files', '-z'], { encoding: 'utf8' })
   .split('\u0000')
   .map((line) => line.trim())
-  .filter((line) => line !== '');
+  .filter((line) => line !== '')
+  .filter((line) => process.env.DSH_ECO_PUBLISH_WORKFLOWS === '1' || !line.startsWith('.github/'));
 
 const api = (pathname, init = {}) =>
   fetch(`https://api.github.com/repos/${OWNER}/${REPO}${pathname}`, {
