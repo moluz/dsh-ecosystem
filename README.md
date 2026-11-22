@@ -4,10 +4,14 @@
 
 ## 给其他会话怎么用
 
-- 机器可读：<https://raw.githubusercontent.com/moluz/dsh-ecosystem/main/data/ecosystem.json>
+- 机器可读（推荐给 DSH 会话，走 GitHub API，最稳）：
+  `mcp__github__get_file_contents(owner="moluz", repo="dsh-ecosystem", path="data/ecosystem.json")`
+- 公网直链：<https://raw.githubusercontent.com/moluz/dsh-ecosystem/main/data/ecosystem.json>
+- CDN 镜像：<https://cdn.jsdelivr.net/gh/moluz/dsh-ecosystem@main/data/ecosystem.json>
 - 人可读：本 README + [docs/tracking.md](docs/tracking.md)
-- 通过 MCP 读取：`mcp__github__get_file_contents(owner="moluz", repo="dsh-ecosystem", path="data/ecosystem.json")`
 - 引用约定：注明 `schemaVersion` 与 `generatedAt`，**市场总数每天都在变**，不要把旧快照当现状。
+
+> 注：某些受限网络环境（例如本机沙箱）可能无法直连 raw/CDN，但 GitHub API 与 MCP 通道可用；以 MCP 结果为准。
 
 ## 数据说明
 
